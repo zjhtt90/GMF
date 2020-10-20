@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CE3FC7F0-FE98-4DCD-AC37-45EC59B5B772}</ProjectGuid>
+    <RootNamespace>MediaCore</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>EXPORTS;__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\third_part\DXSDK9\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\third_party\log4cpp\include;$(SolutionDir)\third_party\jrtplib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\third_party\log4cpp\lib;$(SolutionDir)\third_party\jrtplib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>log4cpp.lib;jrtplib.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AudioCodec.h" />
+    <ClInclude Include="IElementFactory.h" />
+    <ClInclude Include="Media.h" />
+    <ClInclude Include="MediaBaseFilter.h" />
+    <ClInclude Include="MediaBaseSink.h" />
+    <ClInclude Include="MediaBaseSrc.h" />
+    <ClInclude Include="MediaBuffer.h" />
+    <ClInclude Include="MediaBus.h" />
+    <ClInclude Include="MessageBus.h" />
+    <ClInclude Include="MediaDefs.h" />
+    <ClInclude Include="MediaElement.h" />
+    <ClInclude Include="MediaMessage.h" />
+    <ClInclude Include="MediaPort.h" />
+    <ClInclude Include="MirrorPort.h" />
+    <ClInclude Include="Plugin.h" />
+    <ClInclude Include="PluginManager.h" />
+    <ClInclude Include="plugin\AudioFrameBuffer.h" />
+    <ClInclude Include="plugin\D3DVideoRender.h" />
+    <ClInclude Include="plugin\DSoundRender.h" />
+    <ClInclude Include="plugin\DupStreamFilter.h" />
+    <ClInclude Include="plugin\FileSink.h" />
+    <ClInclude Include="plugin\FileSrc.h" />
+    <ClInclude Include="plugin\GDIVideoCapture.h" />
+    <ClInclude Include="plugin\MediaBin.h" />
+    <ClInclude Include="plugin\MediaPipeline.h" />
+    <ClInclude Include="plugin\MicphoneCapture.h" />
+    <ClInclude Include="plugin\SpeakerCapture.h" />
+    <ClInclude Include="VideoCodec.h" />
+    <ClInclude Include="VideoRender.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AudioCodec.cpp" />
+    <ClCompile Include="Media.cpp" />
+    <ClCompile Include="MediaBaseFilter.cpp" />
+    <ClCompile Include="MediaBaseSink.cpp" />
+    <ClCompile Include="MediaBaseSrc.cpp" />
+    <ClCompile Include="MediaBuffer.cpp" />
+    <ClCompile Include="MediaBus.cpp" />
+    <ClCompile Include="MessageBus.cpp" />
+    <ClCompile Include="MediaElement.cpp" />
+    <ClCompile Include="MediaPort.cpp" />
+    <ClCompile Include="MirrorPort.cpp" />
+    <ClCompile Include="Plugin.cpp" />
+    <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="plugin\AudioFrameBuffer.cpp" />
+    <ClCompile Include="plugin\CorePlugin.cpp" />
+    <ClCompile Include="plugin\D3DVideoRender.cpp" />
+    <ClCompile Include="plugin\DSoundRender.cpp" />
+    <ClCompile Include="plugin\DupStreamFilter.cpp" />
+    <ClCompile Include="plugin\FileSink.cpp" />
+    <ClCompile Include="plugin\FileSrc.cpp" />
+    <ClCompile Include="plugin\GDIVideoCapture.cpp" />
+    <ClCompile Include="plugin\MediaBin.cpp" />
+    <ClCompile Include="plugin\MediaPipeline.cpp" />
+    <ClCompile Include="plugin\MicphoneCapture.cpp" />
+    <ClCompile Include="plugin\SpeakerCapture.cpp" />
+    <ClCompile Include="VideoCodec.cpp" />
+    <ClCompile Include="VideoRender.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{b23ab692-1efb-452e-a21d-2645cabd7984}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

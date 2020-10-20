@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IElementFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Media.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBaseFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBaseSink.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBaseSrc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaDefs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaElement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaPort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Plugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoRender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\D3DVideoRender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\FileSrc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MirrorPort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\MediaBin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\MediaPipeline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\DupStreamFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\GDIVideoCapture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\FileSink.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoCodec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MediaBus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\AudioFrameBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioCodec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\SpeakerCapture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\MicphoneCapture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin\DSoundRender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MediaBaseFilter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaBaseSink.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaBaseSrc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaPort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Plugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoRender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Media.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\D3DVideoRender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\FileSrc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\CorePlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaElement.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MirrorPort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\MediaBin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\MediaPipeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\DupStreamFilter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\GDIVideoCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\FileSink.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoCodec.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MediaBus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\AudioFrameBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioCodec.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\SpeakerCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\MicphoneCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="plugin\DSoundRender.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

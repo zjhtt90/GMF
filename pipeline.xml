@@ -1,0 +1,12 @@
+<?XML VERSION="1.0" ENCODING="utf-8" ?>
+<Pipeline name="encoder" layout="Horizon">
+	<Src Factory="FileSrc" name="fileraw">
+		<Media value="Video"/>
+		<FilePath value="C:\\Users\\zhaojianhe\\Desktop\\0.yuv" />
+		<TrunkSize value="3110400"/>
+		<VideoWidth value="1920" />
+		<VideoHeight value="1080" />
+		<ImgFormat value="0" />
+	</Src>
+	<Sink Factory="SDLVideoRender" name="render" />
+</Pipeline>

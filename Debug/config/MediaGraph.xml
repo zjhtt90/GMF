@@ -1,0 +1,60 @@
+<?XML VERSION="1.0" ENCODING="UTF-8" ?>
+<MediaGraph>
+	<Log>
+		<!--控制台输出,1为true-->
+		<Consolelog value="1" />
+		<!--系统输出,1为true-->
+		<Systemlog value="0" />
+		<!--文件输出,1为true-->
+		<Filelog value="0" />
+		<!--控制输出颜色，1为彩色-->
+		<Color value="1" />
+		<!-- 日志级别 error 输出错误  warn 输出警告  info 输出信息  debug 输出调试信息  trace 输出跟踪信息 -->
+		<LogLevel value="debug" />
+		<!--日志保存路径-->
+		<LogSavePath value="/var/log" />
+	</Log>
+	
+	<MediaElementParam type="1" owner="vScreenCap">
+		<ImgFormat value="30" />
+		<VideoFPS value="30" />
+	</MediaElementParam>
+	
+	<MediaElementParam type="2" owner="vFilter">
+		<FilterDescription value="drawtext=fontfile='simkai.ttf':text='%{localtime\:%H\\\:%M\\\:%S}':x=10:y=5:fontcolor=green:fontsize=30,format=pix_fmts=yuv420p" />
+		<ImgFormat value="0" />
+	</MediaElementParam>
+	
+	<MediaElementParam type="2" owner="vEnc">
+		<VideoFPS value="30" />
+		<Bitrate value="1024" />
+		<BitrateRange min="128" max="2048" />
+		<QValue min="26" max="32" />
+		<IFrameInterval value="20" />
+		<CodecPreset value="ultrafast" />
+		<CodecControl value="cbr" />
+		<CodecQuality value="3" />
+		<CodecProfile value="baseline" />
+	</MediaElementParam>
+	
+	<MediaElementParam type="1" owner="aMicCap">
+		<FilePath value="麦克风 (HD Pro Webcam C920)" />
+		<SampleRate value="44100" />
+		<AudioChannel value="2" />
+		<SampleFormat value="1" />
+	</MediaElementParam>
+	
+	<MediaElementParam type="2" owner="aAudioBuffer">
+		<FrameSampleCount value="1024" />
+	</MediaElementParam>
+	
+	<MediaElementParam type="3" owner="rtspSink">
+		<InPortCount value="2" />
+	</MediaElementParam>
+	
+	
+	<PipelineSelector>
+		<!-- 当前选用Pipeline组建模板-->
+		<model value="singleScreenCapture" index="1"/>
+	</PipelineSelector>
+</MediaGraph>

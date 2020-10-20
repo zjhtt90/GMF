@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Plugin>
+	<item name="Base" libpath="E:\work\MediaFramework\Debug\MediaBasePlugin.dll" />
+</Plugin>
