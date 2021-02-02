@@ -7,7 +7,7 @@
     </Filter>
     <Filter Include="头文件">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="资源文件">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
@@ -15,63 +15,90 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AudioFrameBuffer.h">
+    <ClInclude Include="FFScreenCapture.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="D3DVideoRender.h">
+    <ClInclude Include="FFSimpleFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DSoundRender.h">
+    <ClInclude Include="FFComplexFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DupStreamFilter.h">
+    <ClInclude Include="FFMediaStorage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="FileSink.h">
+    <ClInclude Include="LiveRTSPSink.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="FileSrc.h">
+    <ClInclude Include="FFAACEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GDIVideoCapture.h">
+    <ClInclude Include="FFH264Encoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MicphoneCapture.h">
+    <ClInclude Include="FFCameraCapture.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SpeakerCapture.h">
+    <ClInclude Include="FFVideoScaler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FFVideoDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FFAudioDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FFRTSPServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FFAudioResample.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AudioFrameBuffer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="D3DVideoRender.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DSoundRender.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="DupStreamFilter.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSink.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSrc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GDIVideoCapture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MicphoneCapture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SpeakerCapture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="BasePlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFScreenCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFSimpleFilter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFComplexFilter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFMediaStorage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveRTSPSink.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFAACEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFH264Encoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFCameraCapture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFVideoScaler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFVideoDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFAudioDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFRTSPServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFAudioResample.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #ifndef _RTP_SRC_H_
 #define _RTP_SRC_H_
 
-#include "../MediaBaseSrc.h"
+#include "../MediaCore/MediaBaseSrc.h"
 
 #include "jrtplib3/rtpsession.h"
 
@@ -15,7 +15,8 @@ public:
 	virtual int Open();
 	virtual void Close();
 
-protected:
+	virtual void SetState(MediaElementState state);
+
 	virtual int FillOutBuffer(TRACKID &id, CMediaBuffer **buffer);
 private:
 	void Init(const std::string &name);

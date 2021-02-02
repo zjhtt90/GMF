@@ -1,69 +1,56 @@
-#include "FFCameraCapture.h"
-#include "FFVideoScaler.h"
-#include "FFH264Encoder.h"
-#include "FFAACEncoder.h"
-#include "FFVideoDecoder.h"
-#include "FFAudioResample.h"
-#include "FFAudioDecoder.h"
-//#include "SDLVideoRender.h"
-#include "FFScreenCapture.h"
-#include "FFSimpleFilter.h"
-#include "FFComplexFilter.h"
-#include "FFRTSPServer.h"
-#include "LiveRTSPSink.h"
+#include "FileSrc.h"
+#include "DupStreamFilter.h"
+#include "AudioFrameBuffer.h"
+#include "FileSink.h"
+#ifdef SYSTEM_WIN32
+#include "MicphoneCapture.h"
+#include "SpeakerCapture.h"
+#include "DSoundRender.h"
+#include "GDIVideoCapture.h"
+#include "D3DVideoRender.h"
+#endif
+#include "MediaBin.h"
+#include "MediaPipeline.h"
 
-#include "../MediaCore/Plugin.h"
+#include "Plugin.h"
+
 
 static int plugin_init(CPlugin *plugin)
 {
-	av_register_all();
-	avdevice_register_all();
-	avcodec_register_all();
-	avfilter_register_all();
+	plugin->AddElement("FileSrc", new CFileSrcFactory());
+	plugin->AddElement("DupStreamFilter", new CDupStreamFilterFactory());
+	plugin->AddElement("AudioFrameBuffer", new CAudioFrameBufferFactory());
+	plugin->AddElement("FileSink", new CFileSinkFactory());
+#ifdef SYSTEM_WIN32
+	plugin->AddElement("MicphoneCapture", new CMicphoneCaptureFactory());
+	plugin->AddElement("SpeakerCapture", new CSpeakerCaptureFactory());
+	plugin->AddElement("DSoundRender", new CDSoundRenderFactory());
+	plugin->AddElement("GDIVideoCapture", new CGDIVideoCaptureFactory());
+	plugin->AddElement("D3DVideoRender", new CD3DVideoRenderFactory());
+#endif
 
-	//av_log_set_level(AV_LOG_TRACE);
-
-	plugin->AddElement("FFScreenCapture", new CFFScreenCaptureFactory());
-	plugin->AddElement("FFCameraCapture", new CFFCameraCaptureFactory());
-
-	plugin->AddElement("FFSimpleFilter", new CFFSimpleFilterFactory());
-	plugin->AddElement("FFComplexFilter", new CFFComplexFilterFactory());
-
-	plugin->AddElement("FFH264Encoder", new CFFH264EncoderFactory());
-	plugin->AddElement("FFAACEncoder", new CFFAACEncoderFactory());
-	plugin->AddElement("FFVideoScaler", new CFFVideoScalerFactory());
-
-	plugin->AddElement("FFAudioResample", new CFFAudioResampleFactory());
-	plugin->AddElement("FFVideoDecoder", new CFFVideoDecoderFactory());
-	plugin->AddElement("FFAudioDecoder", new CFFAudioDecoderFactory());
-
-	plugin->AddElement("FFRTSPServer", new CFFRTSPServerFactory());
-
-	plugin->AddElement("LiveRTSPSink", new CLiveRTSPSinkFactory());
-
-	//SDL_InitSubSystem(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
-	//plugin->AddElement("SDLVideoRender", new CSDLVideoRenderFactory());
+	plugin->AddElement("Bin", new CMediaBinFactory());
+	plugin->AddElement("Pipeline", new CPipelineFactory());
 
 	return MEDIA_ERR_NONE;
 }
 
 static void plugin_uninit(CPlugin *plugin)
 {
-	plugin->RemoveElement("FFScreenCapture");
-	plugin->RemoveElement("FFCameraCapture");
-	plugin->RemoveElement("FFSimpleFilter");
-	plugin->RemoveElement("FFComplexFilter");
-	plugin->RemoveElement("FFH264Encoder");
-	plugin->RemoveElement("FFAACEncoder");
-	plugin->RemoveElement("FFVideoScaler");
-	plugin->RemoveElement("FFAudioResample");
-	plugin->RemoveElement("FFVideoDecoder");
-	plugin->RemoveElement("FFAudioDecoder");
-	plugin->RemoveElement("FFRTSPServer");
-	plugin->RemoveElement("LiveRTSPSink");
+	plugin->RemoveElement("FileSrc");
+	plugin->RemoveElement("DupStreamFilter");
+	plugin->RemoveElement("AudioFrameBuffer");
+	plugin->RemoveElement("FileSink");
+#ifdef SYSTEM_WIN32
+	plugin->RemoveElement("MicphoneCapture");
+	plugin->RemoveElement("SpeakerCapture");
+	plugin->RemoveElement("DSoundRender");
+	plugin->RemoveElement("GDIVideoCapture");
+	plugin->RemoveElement("D3DVideoRender");
+#endif
 
-	//plugin->RemoveElement("SDLVideoRender");
-	//SDL_QuitSubSystem(SDL_INIT_AUDIO | SDL_INIT_VIDEO);
+	plugin->RemoveElement("Bin");
+	plugin->RemoveElement("Pipeline");
 }
 
-PLUGIN_DEFINE(Base, "Media Base plugin", plugin_init, plugin_uninit)
+PLUGIN_DEFINE_STASIC(base, "Media Base plugin", plugin_init, plugin_uninit)

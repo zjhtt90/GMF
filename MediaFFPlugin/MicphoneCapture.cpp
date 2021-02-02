@@ -1,13 +1,8 @@
 #include "MicphoneCapture.h"
 
-#include "MediaBuffer.h"
-#include "Util.h"
-#include "LogManager.h"
-
-#ifdef SYSTEM_WIN32
-#pragma comment(lib, "dsound.lib")
-#pragma comment(lib, "dxguid.lib")
-#endif
+#include "../MediaCore/MediaBuffer.h"
+#include "../Common/Util.h"
+#include "../Common/LogManager.h"
 
 #define LOG_FILTER	"MicphoneCapture"
 
@@ -95,14 +90,13 @@ int CMicphoneCapture::Open()
 {
 	LOG_INFO("Start MicphoneCapture");
 	HRESULT hr;
-	WAVEFORMATEX wfx = { WAVE_FORMAT_PCM };
-	DSCBUFFERDESC dscbd = { 0 };
 
 	CoInitialize(NULL);
 
 	if(hr = DirectSoundCaptureCreate(m_pCaptureGUID, &m_pDSCapture, NULL) < 0)
 		goto err;
 
+	WAVEFORMATEX wfx = {WAVE_FORMAT_PCM};
 	wfx.nChannels = m_channel;
 	wfx.nSamplesPerSec = m_sampleRate;
 	wfx.wBitsPerSample = 16;
@@ -115,6 +109,7 @@ int CMicphoneCapture::Open()
 
 	// Set the buffer sizes 
 	m_dwCaptureBufferSize = m_dwNotifySize * NUM_REC_NOTIFICATIONS;
+	DSCBUFFERDESC dscbd = {0};
 	dscbd.dwSize = sizeof(DSCBUFFERDESC);
 	dscbd.dwFlags = 0;
 	dscbd.dwBufferBytes = m_dwCaptureBufferSize;

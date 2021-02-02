@@ -1,10 +1,12 @@
 #ifndef _MIC_CAPTURE_H_
 #define _MIC_CAPTURE_H_
 
-#include "MediaBaseSrc.h"
+#include "../MediaCore/MediaBaseSrc.h"
 
-#ifdef SYSTEM_WIN32
+#ifdef _WIN32
 #include <dsound.h>
+#pragma comment(lib, "../third_part/DXSDK9/lib/dsound.lib")
+#pragma comment(lib, "../third_part/DXSDK9/lib/dxguid.lib")
 #define NUM_REC_NOTIFICATIONS  16
 #endif
 
@@ -27,7 +29,7 @@ public:
 
 private:
 	void Init(const std::string &name);
-#ifdef SYSTEM_WIN32
+#ifdef _WIN32
 	static BOOL CALLBACK DSoundEnumCallback(GUID* pGUID, LPSTR strDesc, LPSTR strDrvName, VOID* pContext);
 	HRESULT InitNotifications();
 	HRESULT RecordCapturedData(BYTE **pData, int &lLength);
@@ -38,7 +40,7 @@ private:
 	int m_sampleRate;
 	int m_channel;
 	int m_sampleFmt;
-#ifdef SYSTEM_WIN32
+#ifdef _WIN32
 	GUID* m_pCaptureGUID;
 	LPDIRECTSOUNDCAPTURE m_pDSCapture;
 	LPDIRECTSOUNDCAPTUREBUFFER m_pDSBCapture;

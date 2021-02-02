@@ -1,7 +1,7 @@
 #include "RTPSrc.h"
 
-#include "../../Common/LogManager.h"
-#include "../MediaBuffer.h"
+#include "../Common/LogManager.h"
+#include "../MediaCore/MediaBuffer.h"
 
 #include "jrtplib3/rtppacket.h"
 #include "jrtplib3/rtpudpv4transmitter.h"
@@ -25,7 +25,6 @@ CRTPSrc::CRTPSrc()
 	ss.fill('0');
 	ss << m_ID;
 	std::string name = "RTPSrc" + ss.str();	
-	m_ID++;
 
 	Init(name);
 }
@@ -43,11 +42,15 @@ CRTPSrc::~CRTPSrc()
 
 void CRTPSrc::Init(const std::string &name)
 {
-	m_desc.SetElementType(ELEMENT_TYPE_RTP_SRC);
+	m_ID++;
+
+	m_desc.SetElementType(ELEMENT_TYPE_SRC);
 	m_desc.SetElementName(name);
 	m_desc.SetElementPortCount(0, 1);
 
 	m_outPorts[0] = new CMediaPort(this, PORT_DIR_OUT);
+
+	m_outPorts[0]->SetActiveMode(true, STREAMING_PUSH);
 
 }
 
@@ -100,6 +103,51 @@ void CRTPSrc::Close()
 {
 	m_rtpSess.BYEDestroy(jrtplib::RTPTime(10,0),0,0);
 }
+
+void CRTPSrc::SetState(MediaElementState state)
+{
+	CMediaElement::SetState(state);
+
+	if(state == MEDIA_ELEMENT_STATE_READY)
+	{
+		MetaData data;
+		m_desc.GetMetaData(META_KEY_MEDIA, data);
+		m_outPorts[0]->SetProperty(data);
+		if(data.mValue == "Video")
+		{
+			if(m_desc.GetMetaData(META_KEY_VIDEO_WIDTH, data) == MEDIA_ERR_NONE)
+				m_outPorts[0]->SetProperty(data);
+			if(m_desc.GetMetaData(META_KEY_VIDEO_HEIGHT, data) == MEDIA_ERR_NONE)
+				m_outPorts[0]->SetProperty(data);
+			if(m_desc.GetMetaData(META_KEY_PIX_FORMAT, data) == MEDIA_ERR_NONE)
+				m_outPorts[0]->SetProperty(data);
+		}
+		else if(data.mValue == "Audio")
+		{
+			//TODO for audio param
+		}
+
+		//m_desc.Print();
+	}
+	else if(state == MEDIA_ELEMENT_STATE_OPEN)
+	{
+		if(Open() == MEDIA_ERR_NONE)
+		{
+			m_outPorts[0]->StartTask();
+		}
+	}
+	else if(state == MEDIA_ELEMENT_STATE_PAUSE)
+	{
+		m_outPorts[0]->PauseTask();
+	}
+	else if(state == MEDIA_ELEMENT_STATE_STOP)
+	{
+		m_outPorts[0]->StopTask();
+
+		Close();
+	}
+}
+
 
 int CRTPSrc::FillOutBuffer(TRACKID &id, CMediaBuffer **buffer)
 {
