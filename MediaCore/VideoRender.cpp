@@ -1,7 +1,7 @@
 #include "VideoRender.h"
-#include "../Common/LogManager.h"
+#include "LogManager.h"
 #include "MediaBuffer.h"
-#include "../common/Util.h"
+#include "Util.h"
 
 #include <assert.h>
 

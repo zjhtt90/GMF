@@ -8,7 +8,7 @@
 
 #include "MediaBus.h"
 
-#include "../common/SMutex.h"
+#include "SMutex.h"
 
 #include <map>
 #include <vector>

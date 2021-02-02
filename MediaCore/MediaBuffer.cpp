@@ -1,6 +1,6 @@
 #include "MediaBuffer.h"
 
-#include "../Common/LogManager.h"
+#include "LogManager.h"
 
 #define LOG_FILTER	"MediaBuffer"
 

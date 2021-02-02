@@ -51,28 +51,7 @@
     <ClInclude Include="VideoRender.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\D3DVideoRender.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\FileSrc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MirrorPort.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\MediaBin.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\MediaPipeline.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\DupStreamFilter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\GDIVideoCapture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\FileSink.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="VideoCodec.h">
@@ -87,19 +66,13 @@
     <ClInclude Include="MediaBus.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\AudioFrameBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="AudioCodec.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\SpeakerCapture.h">
+    <ClInclude Include="MediaBin.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="plugin\MicphoneCapture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="plugin\DSoundRender.h">
+    <ClInclude Include="MediaPipeline.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -128,34 +101,10 @@
     <ClCompile Include="Media.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="plugin\D3DVideoRender.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\FileSrc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\CorePlugin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MediaElement.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MirrorPort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\MediaBin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\MediaPipeline.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\DupStreamFilter.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\GDIVideoCapture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\FileSink.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="VideoCodec.cpp">
@@ -170,19 +119,13 @@
     <ClCompile Include="MediaBus.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="plugin\AudioFrameBuffer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="AudioCodec.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="plugin\SpeakerCapture.cpp">
+    <ClCompile Include="MediaBin.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="plugin\MicphoneCapture.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="plugin\DSoundRender.cpp">
+    <ClCompile Include="MediaPipeline.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

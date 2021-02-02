@@ -2,9 +2,9 @@
 
 #include "../config.h"
 
-#include "../Common/tinyxml2.h"
+#include "tinyxml2.h"
 
-PLUGIN_STATIC_DECLARE(Core);
+PLUGIN_STATIC_DECLARE(base);
 
 CPluginManager CPluginManager::m_Instance;
 
@@ -25,7 +25,7 @@ CPluginManager& CPluginManager::GetInstance()
 
 void CPluginManager::LoadPlugins()
 {
-	PLUGIN_STATIC_REGISTER(Core);
+	PLUGIN_STATIC_REGISTER(base);
 
 	std::string confPath = PLUGIN_CONFIG_FILE;
 

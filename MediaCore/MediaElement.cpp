@@ -1,6 +1,6 @@
 #include "MediaElement.h"
 
-#include "../Common/LogManager.h"
+#include "LogManager.h"
 
 #include <ostream>
 #include <iomanip>

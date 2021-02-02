@@ -1,5 +1,5 @@
 #include "AudioCodec.h"
-#include "../Common/Util.h"
+#include "Util.h"
 
 CAudioCodec::CAudioCodec() : m_codecID(0), m_sampleRate(44100), m_channel(2), m_sampleFmt(AUDIO_SAMPLE_FMT_S16)
 {

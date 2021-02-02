@@ -4,9 +4,9 @@
 #include <deque>
 #include <list>
 
-#include "../Common/SThread.h"
-#include "../Common/SMutex.h"
-#include "../Common/SEvent.h"
+#include "SThread.h"
+#include "SMutex.h"
+#include "SEvent.h"
 #include "MediaMessage.h"
 
 class CMediaElement;

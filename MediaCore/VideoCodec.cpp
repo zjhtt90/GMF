@@ -1,5 +1,5 @@
 #include "VideoCodec.h"
-#include "../Common/Util.h"
+#include "Util.h"
 
 
 CVideoCodec::CVideoCodec()

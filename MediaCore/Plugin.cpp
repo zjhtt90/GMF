@@ -1,7 +1,7 @@
 #include "Plugin.h"
 
-#include "../Common/ModuleLoader.h"
-#include "../Common/LogManager.h"
+#include "ModuleLoader.h"
+#include "LogManager.h"
 #include "PluginManager.h"
 
 #include <sys/stat.h>

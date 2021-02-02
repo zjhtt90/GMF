@@ -1,10 +1,10 @@
 #include "Media.h"
 #include "MediaElement.h"
 #include "PluginManager.h"
-#include "../Common/LogManager.h"
+#include "LogManager.h"
 
-#include "plugin/MediaBin.h"
-#include "plugin/MediaPipeline.h"
+#include "MediaBin.h"
+#include "MediaPipeline.h"
 
 #include <iostream>
 

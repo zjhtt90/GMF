@@ -4,8 +4,8 @@
 #include "MediaDefs.h"
 #include "../config.h"
 
-#include "../Common/SThread.h"
-#include "../Common/SEvent.h"
+#include "SThread.h"
+#include "SEvent.h"
 
 #include <string>
 #include <map>
