@@ -1,8 +1,8 @@
 #include "FFRTSPServer.h"
 #include "common.h"
-#include "../MediaCore/MediaBuffer.h"
-#include "../Common/Util.h"
-#include "../Common/LogManager.h"
+#include "MediaBuffer.h"
+#include "Util.h"
+#include "LogManager.h"
 #include <assert.h>
 
 #define LOG_FILTER	"FFRTSPServer"

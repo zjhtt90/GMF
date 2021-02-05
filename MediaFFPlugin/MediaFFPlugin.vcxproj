@@ -57,8 +57,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\third_part\SDL2-2.0.4\lib\x86;$(SolutionDir)\third_part\ffmpeg\lib;$(SolutionDir)\third_part\LiveMediaServer\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>avutil.lib;avdevice.lib;avformat.lib;avcodec.lib;avfilter.lib;swscale.lib;swresample.lib;SDL2.lib;libMediaServer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\third_part\SDL2-2.0.4\lib\x86;$(SolutionDir)\third_part\ffmpeg\lib;$(SolutionDir)\third_part\LiveMediaServer\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MediaCore.lib;avutil.lib;avdevice.lib;avformat.lib;avcodec.lib;avfilter.lib;swscale.lib;swresample.lib;SDL2.lib;libMediaServer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,12 +87,11 @@
     <ClInclude Include="FFSimpleFilter.h" />
     <ClInclude Include="FFH264Encoder.h" />
     <ClInclude Include="FFVideoDecoder.h" />
-    <ClInclude Include="LiveRTSPSink.h" />
     <ClInclude Include="FFVideoScaler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FFAACEncoder.cpp" />
-    <ClCompile Include="BasePlugin.cpp" />
+    <ClCompile Include="FFmpegPlugin.cpp" />
     <ClCompile Include="FFAudioDecoder.cpp" />
     <ClCompile Include="FFAudioResample.cpp" />
     <ClCompile Include="FFCameraCapture.cpp" />
@@ -103,16 +102,7 @@
     <ClCompile Include="FFSimpleFilter.cpp" />
     <ClCompile Include="FFH264Encoder.cpp" />
     <ClCompile Include="FFVideoDecoder.cpp" />
-    <ClCompile Include="LiveRTSPSink.cpp" />
     <ClCompile Include="FFVideoScaler.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.vcxproj">
-      <Project>{b23ab692-1efb-452e-a21d-2645cabd7984}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\MediaCore\MediaCore.vcxproj">
-      <Project>{ce3fc7f0-fe98-4dcd-ac37-45ec59b5b772}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

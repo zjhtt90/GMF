@@ -1,7 +1,7 @@
 #ifndef _FF_COMPLEX_FILTER_H_
 #define _FF_COMPLEX_FILTER_H_
 
-#include "../MediaCore/MediaBaseFilter.h"
+#include "MediaBaseFilter.h"
 
 extern "C"
 {

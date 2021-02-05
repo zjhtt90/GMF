@@ -1,8 +1,8 @@
 #include "FFH264Encoder.h"
 #include "common.h"
-#include "../Common/LogManager.h"
-#include "../MediaCore/MediaBuffer.h"
-#include "../Common/Util.h"
+#include "LogManager.h"
+#include "MediaBuffer.h"
+#include "Util.h"
 
 extern "C"
 {

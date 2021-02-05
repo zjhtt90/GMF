@@ -27,9 +27,6 @@
     <ClInclude Include="FFMediaStorage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LiveRTSPSink.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="FFAACEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -59,9 +56,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BasePlugin.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="FFScreenCapture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -72,9 +66,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FFMediaStorage.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="LiveRTSPSink.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FFAACEncoder.cpp">
@@ -99,6 +90,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FFAudioResample.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFmpegPlugin.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

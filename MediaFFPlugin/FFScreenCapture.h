@@ -1,7 +1,7 @@
 #ifndef _FF_SCREEN_CAPTURE_H_
 #define _FF_SCREEN_CAPTURE_H_
 
-#include "../MediaCore/MediaBaseSrc.h"
+#include "MediaBaseSrc.h"
 
 extern "C"
 {

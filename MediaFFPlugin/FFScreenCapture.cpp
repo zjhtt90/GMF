@@ -1,8 +1,8 @@
 #include "FFScreenCapture.h"
 #include "common.h"
-#include "../Common/Util.h"
-#include "../Common/LogManager.h"
-#include "../MediaCore/MediaBuffer.h"
+#include "Util.h"
+#include "LogManager.h"
+#include "MediaBuffer.h"
 #include <assert.h>
 #include "libavutil/pixfmt.h"
 #ifndef SYSTEM_WIN32

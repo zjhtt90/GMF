@@ -1,7 +1,7 @@
 #ifndef _FF_MEDIASTORAGE_SINK_H_
 #define _FF_MEDIASTORAGE_SINK_H_
 
-#include "../MediaCore/MediaBaseSink.h"
+#include "MediaBaseSink.h"
 
 extern "C"
 {

@@ -1,7 +1,7 @@
 #include "FFAACEncoder.h"
 
-#include "../Common/LogManager.h"
-#include "../MediaCore/MediaBuffer.h"
+#include "LogManager.h"
+#include "MediaBuffer.h"
 #include "common.h"
 
 #include <sstream>

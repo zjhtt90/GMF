@@ -1,7 +1,7 @@
 #ifndef _FF_VIDEO_SCALER_H_
 #define _FF_VIDEO_SCALER_H_
 
-#include "../MediaCore/MediaBaseFilter.h"
+#include "MediaBaseFilter.h"
 
 extern "C"
 {

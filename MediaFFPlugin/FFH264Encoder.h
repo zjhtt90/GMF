@@ -1,11 +1,11 @@
 #ifndef _FF_H264_ENCODER_H_
 #define _FF_H264_ENCODER_H_
 
-#include "../MediaCore/VideoCodec.h"
+#include "VideoCodec.h"
 
-#include "../Common/SThread.h"
-#include "../Common/SMutex.h"
-#include "../Common/SEvent.h"
+#include "SThread.h"
+#include "SMutex.h"
+#include "SEvent.h"
 extern "C"
 {
 #include "libavcodec/avcodec.h"

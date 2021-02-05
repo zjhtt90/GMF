@@ -2,8 +2,8 @@
 #define _RTSP_SINK_H_
 
 #include "LiveStreamIO.h"
-#include "../Common/SThread.h"
-#include "../MediaCore/MediaBaseSink.h"
+#include "SThread.h"
+#include "MediaBaseSink.h"
 
 class CLiveRTSPSink : public CMediaBaseSink, public CSThread
 {

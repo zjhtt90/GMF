@@ -1,7 +1,7 @@
 #include "LiveRTSPSink.h"
-#include "../MediaCore/MediaBuffer.h"
-#include "../Common/LogManager.h"
-#include "../Common/Util.h"
+#include "MediaBuffer.h"
+#include "LogManager.h"
+#include "Util.h"
 
 #include "MediaServer.h"
 

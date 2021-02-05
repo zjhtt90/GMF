@@ -1,7 +1,7 @@
 #ifndef _FF_AUDIO_RESAMPLE_H_
 #define _FF_AUDIO_RESAMPLE_H_
 
-#include "../MediaCore/MediaBaseFilter.h"
+#include "MediaBaseFilter.h"
 extern "C"
 {
 #include "libswresample/swresample.h"

@@ -1,7 +1,7 @@
 #ifndef _FF_AAC_ENCODER_H_
 #define _FF_AAC_ENCODER_H_
 
-#include "../MediaCore/AudioCodec.h"
+#include "AudioCodec.h"
 
 extern "C"
 {

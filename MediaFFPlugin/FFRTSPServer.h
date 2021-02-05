@@ -1,7 +1,7 @@
 #ifndef _FF_RTSP_SERVER_H_
 #define _FF_RTSP_SERVER_H_
 
-#include "../MediaCore/MediaBaseSink.h"
+#include "MediaBaseSink.h"
 
 extern "C"
 {
