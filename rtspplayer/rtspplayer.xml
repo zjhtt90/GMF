@@ -1,0 +1,29 @@
+<?XML VERSION="1.0" ENCODING="utf-8" ?>
+<Pipeline name="rtsppipeline" layout="Horizon">
+	<Src Factory="FFStreamingSrc">
+		<OutPortCount value="2" />
+		<Port dir="out" id="0">
+			<Media value="Video" />
+		</Port>
+		<Port dir="out" id="1">
+			<Media value="Audio" />
+		</Port>
+	</Src>
+	
+	<Bin name="decodebin" layout="Vertical">
+		<Bin name="vdecodebin" layout="Horizon">
+			<Filter Factory="FFVideoDecoder" />
+			<Filter Factory="FFVideoScaler">
+			</Filter>
+			<Filter Factory="D3DVideoRender">
+			</Filter>
+		</Bin>
+		
+		<Bin name="adecodebin" layout="Horizon">
+			<Filter Factory="FFAudioDecoder">
+			</Filter>
+			<Filter Factory="DSoundRender">
+			</Filter>
+		</Bin>
+	</Bin>
+</Pipeline>
