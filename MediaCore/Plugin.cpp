@@ -1,6 +1,5 @@
 #include "Plugin.h"
 
-#include "ModuleLoader.h"
 #include "LogManager.h"
 #include "PluginManager.h"
 
@@ -46,9 +45,9 @@ bool CPlugin::Init(const std::string &filePath)
 	}
 
 	void *ptr = NULL;
-	if(CModuleLoader::Load(filePath))
+	if(m_loader.Load(filePath))
 	{
-		if(CModuleLoader::GetSymbol("g_plugin_desc", &ptr) == 0 && ptr != NULL)
+		if(m_loader.GetSymbol("g_plugin_desc", &ptr) == 0 && ptr != NULL)
 		{
 			m_desc = *(PluginDesc*)ptr;
 			if(m_desc.plugin_init != NULL)
@@ -61,7 +60,6 @@ bool CPlugin::Init(const std::string &filePath)
 			res = false;
 		}
 
-		//CModuleLoader::UnLoad();
 	}
 	else
 	{
@@ -75,8 +73,8 @@ void CPlugin::UnInit()
 {
 	m_desc.plugin_uinit(this);
 	m_elements.clear();
-
-	CModuleLoader::UnLoad();
+	if(m_loader.IsLoaded())
+		m_loader.UnLoad();
 }
 
 std::string CPlugin::GetName() const

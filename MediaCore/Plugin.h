@@ -3,6 +3,8 @@
 
 #include "../config.h"
 
+#include "ModuleLoader.h"
+
 #include <map>
 
 class IElementFactory;
@@ -39,6 +41,7 @@ private:
 	std::string m_fileName;  //plugin full path
 	std::string m_baseName;  // base name (non-dir part) of plugin path
 	long m_fileSize;
+	CModuleLoader m_loader;
 	PluginDesc m_desc;
 
 	std::map<std::string, IElementFactory*> m_elements;

@@ -29,7 +29,7 @@ typedef struct
  **/
 #define LOCATION_INFO_INITIALIZER(user_data) {LOG_FILTER, __FILE__, __LINE__, __FUNCTION__, user_data }
 
-
+typedef void(*log_output_cb)(int level, const char* msg);
 
 class API_EXPORT CLogger
 {
@@ -75,6 +75,8 @@ public:
 
 	void setLogPath(const char *file);
 
+	void setLogCallback(log_output_cb fn);
+
 	int startup();
 
     void cleanup();
@@ -117,6 +119,8 @@ private:
 
 	char m_filePath[128];
 	FILE *m_filePtr;
+
+	log_output_cb m_pLogFn;
 
 #ifdef _WIN32
 	HANDLE m_hConsoleOut;

@@ -75,6 +75,9 @@
     <ClInclude Include="MediaPipeline.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="gmf_player.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MediaBaseFilter.cpp">
@@ -126,6 +129,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MediaPipeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="gmf_player.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

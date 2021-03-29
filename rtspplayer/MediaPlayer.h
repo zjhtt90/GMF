@@ -5,7 +5,6 @@
 class CMediaElement;
 namespace GMF {
 
-
 class MediaPlayer
 {
 public:

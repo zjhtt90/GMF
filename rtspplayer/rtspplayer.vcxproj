@@ -184,7 +184,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MediaPlayer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="rtspplayer.h" />
     <ClInclude Include="rtspplayerDlg.h" />
@@ -192,7 +191,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MediaPlayer.cpp" />
     <ClCompile Include="rtspplayer.cpp" />
     <ClCompile Include="rtspplayerDlg.cpp" />
     <ClCompile Include="stdafx.cpp">

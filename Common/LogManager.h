@@ -60,13 +60,13 @@ class CLogManager;
 #define LOG_DEBUG_S(str)		LOG_TRACE_S(CLogger::kDebug, str)
 
 #define LOG_INFO(fmt, ...)	LOG_TRACE(CLogger::kInfo, fmt, ##__VA_ARGS__)
-#define LOG_INFO_S(str)		LOG_TRACE(CLogger::kInfo, str)
+#define LOG_INFO_S(str)		LOG_TRACE_S(CLogger::kInfo, str)
 
 #define LOG_WARN(fmt, ...)	LOG_TRACE(CLogger::kWarning, fmt, ##__VA_ARGS__)
-#define LOG_WARN_S(str)		LOG_TRACE(CLogger::kWarning, str)
+#define LOG_WARN_S(str)		LOG_TRACE_S(CLogger::kWarning, str)
 
 #define LOG_ERR(fmt, ...)	LOG_TRACE(CLogger::kError, fmt, ##__VA_ARGS__)
-#define LOG_ERR_S(str)		LOG_TRACE(CLogger::kError, str)
+#define LOG_ERR_S(str)		LOG_TRACE_S(CLogger::kError, str)
 
 #endif
 
@@ -82,6 +82,11 @@ public:
 	inline static void setLogPath(const char *file)
 	{
 		CLogger::getInstance().setLogPath(file);
+	}
+
+	inline static void setLogCallback(log_output_cb fn)
+	{
+		CLogger::getInstance().setLogCallback(fn);
 	}
 
 	inline static int startup()

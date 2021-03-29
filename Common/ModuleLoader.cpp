@@ -4,9 +4,16 @@
 
 #define LOG_FILTER	"ModuleLoader"
 
-#ifdef _WIN32
-HINSTANCE CModuleLoader::m_hInstLib = NULL;
+CModuleLoader::CModuleLoader()
+	: m_hInstLib(NULL)
+{
+}
 
+CModuleLoader::~CModuleLoader()
+{
+}
+
+#ifdef _WIN32
 bool CModuleLoader::Load(const std::string &libFile)
 {
 	m_hInstLib = LoadLibrary(libFile.c_str());
@@ -31,6 +38,11 @@ bool CModuleLoader::Load(const std::string &libFile, int flag = 0)
 	return true;
 }
 
+bool CModuleLoader::IsLoaded()
+{
+	return m_hInstLib != NULL;
+}
+
 int CModuleLoader::GetSymbol(const std::string &sym, void **ptr)
 {
 	*ptr = GetProcAddress(m_hInstLib, sym.c_str());
@@ -50,8 +62,6 @@ void CModuleLoader::UnLoad()
 }
 
 #else
-void* CModuleLoader::m_hInstLib = NULL;
-
 bool CModuleLoader::Load(const std::string &libFile)
 {
 	return Load(libFile, RTLD_NOW);

@@ -38,14 +38,14 @@ const static char LOG_COLOR[CLogger::kError+ 2][50] = {
 
 CLogger CLogger::m_Instance;
 
-CLogger::CLogger() : m_type(LOG_COUT),m_level(kNone)
+CLogger::CLogger() : m_type(LOG_COUT),m_level(kNone), m_pLogFn(NULL)
 {
 	strcpy(m_filePath, g_default_file);
 
 	m_filePtr = NULL;
 }
 
-CLogger::CLogger(LoggerType type, Level level) : m_type(type),m_level(level)
+CLogger::CLogger(LoggerType type, Level level) : m_type(type),m_level(level), m_pLogFn(NULL)
 {
 
 }
@@ -75,6 +75,12 @@ void CLogger::setLogPath(const char *file)
 		strcpy(m_filePath, file);
 	}
 }
+
+void CLogger::setLogCallback(log_output_cb fn)
+{
+	m_pLogFn = fn;
+}
+
 
 int CLogger::startup()
 {
@@ -195,6 +201,11 @@ void CLogger::logv(int level, const location_info_t* a_locinfo,const char* forma
 	default:
 		ConsoleOut(level, logMsg);
 		break;
+	}
+
+	if (m_pLogFn)
+	{
+		m_pLogFn(level, logMsg);
 	}
 }
 

@@ -152,7 +152,7 @@ void load_element_parame(CMediaElement *mEle, tinyxml2::XMLElement *paraEle, con
 	}
 	else
 	{
-		data = MetaData(paraTag, paraEle->Attribute("value"), META_DATA_VAL_TYPE_INT);
+		data = MetaData(paraTag, paraEle->Attribute("value"), META_DATA_VAL_TYPE_STRING);
 	}
 
 	if(portDir == "in")
@@ -320,6 +320,7 @@ int main(int argc, char **argv)
 	element_set_state(pipeline, MEDIA_ELEMENT_STATE_READY);
 
 	element_set_state(pipeline, MEDIA_ELEMENT_STATE_OPEN);
+
 
 	while(!g_exit)
 	{

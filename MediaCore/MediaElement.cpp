@@ -131,7 +131,7 @@ std::ostream& operator<< (std::ostream &os, const CElementDescription &desc)
 
 
 
-CMediaElement::CMediaElement() : m_bus(NULL), m_parentNode(NULL)
+CMediaElement::CMediaElement() : m_bus(NULL), m_parentNode(NULL), m_errCode(0)
 {
 	for(int i = 0; i < MAX_SIDE_PORT; i++)
 	{

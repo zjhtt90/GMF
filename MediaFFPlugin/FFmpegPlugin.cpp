@@ -1,4 +1,5 @@
 #include "FFCameraCapture.h"
+#include "FFStreamingSrc.h"
 #include "FFVideoScaler.h"
 #include "FFH264Encoder.h"
 #include "FFAACEncoder.h"
@@ -23,6 +24,7 @@ static int plugin_init(CPlugin *plugin)
 
 	plugin->AddElement("FFScreenCapture", new CFFScreenCaptureFactory());
 	plugin->AddElement("FFCameraCapture", new CFFCameraCaptureFactory());
+	plugin->AddElement("FFStreamingSrc", new CFFStreamingSrcFactory());
 
 	plugin->AddElement("FFSimpleFilter", new CFFSimpleFilterFactory());
 	plugin->AddElement("FFComplexFilter", new CFFComplexFilterFactory());
@@ -44,6 +46,7 @@ static void plugin_uninit(CPlugin *plugin)
 {
 	plugin->RemoveElement("FFScreenCapture");
 	plugin->RemoveElement("FFCameraCapture");
+	plugin->RemoveElement("FFStreamingSrc");
 	plugin->RemoveElement("FFSimpleFilter");
 	plugin->RemoveElement("FFComplexFilter");
 	plugin->RemoveElement("FFH264Encoder");

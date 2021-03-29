@@ -50,7 +50,7 @@ END_MESSAGE_MAP()
 
 
 CrtspplayerDlg::CrtspplayerDlg(CWnd* pParent /*=NULL*/)
-	: CDialogEx(IDD_RTSPPLAYER_DIALOG, pParent), m_pPlayer(NULL)
+	: CDialogEx(IDD_RTSPPLAYER_DIALOG, pParent), m_pPlayer1(NULL), m_pPlayer2(NULL)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -102,9 +102,10 @@ BOOL CrtspplayerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	GMF::MediaPlayer::InitCore();
+	gmf_init(0, 0, NULL);
 
-	m_pPlayer = new GMF::MediaPlayer();
+	m_pPlayer1 = gmf_player_create(NULL, NULL);
+	m_pPlayer2 = gmf_player_create(NULL, NULL);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -167,10 +168,11 @@ void CrtspplayerDlg::OnBnClickedButtonPlay()
 	GetDlgItemText(IDC_EDIT_URL, url);
 	if (!url.IsEmpty())
 	{
-		std::string strURL(url.GetBuffer());
-		m_pPlayer->Open(strURL, GetDlgItem(IDC_STATIC_DISPLAY)->m_hWnd);
-		
-		m_pPlayer->Play();
+		gmf_player_open(m_pPlayer1, url.GetBuffer(), GetDlgItem(IDC_STATIC_DISPLAY1)->m_hWnd);
+		gmf_player_play(m_pPlayer1);
+
+		gmf_player_open(m_pPlayer2, url.GetBuffer(), GetDlgItem(IDC_STATIC_DISPLAY2)->m_hWnd);
+		gmf_player_play(m_pPlayer2);
 	}
 }
 
@@ -178,11 +180,14 @@ void CrtspplayerDlg::OnBnClickedButtonPlay()
 void CrtspplayerDlg::OnBnClickedButtonStop()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (m_pPlayer)
+	if (m_pPlayer1)
 	{
-		m_pPlayer->Stop();
+		gmf_player_close(m_pPlayer1);
+	}
 
-		m_pPlayer->Close();
+	if (m_pPlayer2)
+	{
+		gmf_player_close(m_pPlayer2);
 	}
 }
 
@@ -190,12 +195,19 @@ void CrtspplayerDlg::OnBnClickedButtonStop()
 void CrtspplayerDlg::OnClose()
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (m_pPlayer)
+	if (m_pPlayer1)
 	{
-		delete m_pPlayer;
-		m_pPlayer = NULL;
+		gmf_player_destory(m_pPlayer1);
+		m_pPlayer1 = NULL;
 	}
-	GMF::MediaPlayer::UninitCore();
+
+	if (m_pPlayer2)
+	{
+		gmf_player_destory(m_pPlayer2);
+		m_pPlayer2 = NULL;
+	}
+
+	gmf_uninit();
 
 	CDialogEx::OnClose();
 }

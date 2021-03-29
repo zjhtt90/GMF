@@ -31,6 +31,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MediaFFPlugin", "MediaFFPlu
 		{CE3FC7F0-FE98-4DCD-AC37-45EC59B5B772} = {CE3FC7F0-FE98-4DCD-AC37-45EC59B5B772}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rtspplayer", "rtspplayer\rtspplayer.vcxproj", "{D48D6805-0C81-4FFA-8EBC-440F77152EBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -107,6 +109,14 @@ Global
 		{0715D48C-C8DD-4A7A-93AE-1F1E752D9C23}.Release|Win32.ActiveCfg = Release|Win32
 		{0715D48C-C8DD-4A7A-93AE-1F1E752D9C23}.Release|Win32.Build.0 = Release|Win32
 		{0715D48C-C8DD-4A7A-93AE-1F1E752D9C23}.Release|x64.ActiveCfg = Release|Win32
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Debug|Win32.Build.0 = Debug|Win32
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Debug|x64.ActiveCfg = Debug|x64
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Debug|x64.Build.0 = Debug|x64
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|Win32.ActiveCfg = Release|Win32
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|Win32.Build.0 = Release|Win32
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|x64.ActiveCfg = Release|x64
+		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

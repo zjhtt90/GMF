@@ -51,10 +51,10 @@ int MediaPlayer::Open(const std::string& strURL, void* hWnd)
 
 	element_set_parame(m_pSrc, MetaData(META_KEY_URI, strURL, META_DATA_VAL_TYPE_STRING));
 	m_hWnd = hWnd;
-	RECT rect = { 0 };
-	::GetClientRect((HWND)m_hWnd, &rect);
-	element_set_parame(m_pScaler, MetaData(META_KEY_VIDEO_WIDTH, CUtil::convert<std::string, int>(rect.right - rect.left), META_DATA_VAL_TYPE_INT));
-	element_set_parame(m_pScaler, MetaData(META_KEY_VIDEO_HEIGHT, CUtil::convert<std::string, int>(rect.bottom - rect.top), META_DATA_VAL_TYPE_INT));
+	//RECT rect = { 0 };
+	//::GetClientRect((HWND)m_hWnd, &rect);
+	//element_set_parame(m_pScaler, MetaData(META_KEY_VIDEO_WIDTH, CUtil::convert<std::string, int>(rect.right - rect.left), META_DATA_VAL_TYPE_INT));
+	//element_set_parame(m_pScaler, MetaData(META_KEY_VIDEO_HEIGHT, CUtil::convert<std::string, int>(rect.bottom - rect.top), META_DATA_VAL_TYPE_INT));
 
 	element_set_parame(m_pVideoRender, MetaData(META_KEY_VIDEO_WINDOW, CUtil::convert<std::string, long>((long)hWnd), META_DATA_VAL_TYPE_PTR));
 	
@@ -184,7 +184,7 @@ int MediaPlayer::CreatePipeline()
 				return -1;
 			}
 			bin_add_element(pVDecBin, pVDec);
-
+			/*
 			m_pScaler = element_create("FFVideoScaler", "");
 			if (m_pScaler == NULL)
 			{
@@ -193,7 +193,7 @@ int MediaPlayer::CreatePipeline()
 			}
 			bin_add_element(pVDecBin, m_pScaler);
 			bin_connect_element(pVDecBin, pVDec, m_pScaler);
-
+			*/
 			m_pVideoRender = element_create("D3DVideoRender", "");
 			if (m_pVideoRender == NULL)
 			{
@@ -201,7 +201,7 @@ int MediaPlayer::CreatePipeline()
 				return -1;
 			}
 			bin_add_element(pVDecBin, m_pVideoRender);
-			bin_connect_element(pVDecBin, m_pScaler, m_pVideoRender);
+			bin_connect_element(pVDecBin, pVDec, m_pVideoRender);
 
 			element_set_state(pVDecBin, MEDIA_ELEMENT_STATE_PREPARE);
 		}

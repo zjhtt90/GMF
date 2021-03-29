@@ -36,7 +36,6 @@ private:
 	MediaMetaInfo *m_oMediaInfo[MAX_SIDE_PORT];
 	bool m_bGetKeyFrame;
 	unsigned long long m_curPlayTime;
-	long long m_timelineStart;
 };
 
 

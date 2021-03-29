@@ -35,6 +35,16 @@ void CDSoundRender::Init(const std::string &name)
 	m_inPorts[0]->SetProperty(data);
 
 	m_desc.SetElementPortCount(1, 0);
+
+	m_pDS = NULL;
+	m_pDSBuffer8 = NULL;
+	m_pDSBuffer = NULL;
+	m_pDSNotify = NULL;
+	m_hwnd = NULL;
+	for (int i = 0; i < MAX_AUDIO_BUF; i++)
+	{
+		m_event[i] = NULL;
+	}
 }
 
 void CDSoundRender::SetState(MediaElementState state)

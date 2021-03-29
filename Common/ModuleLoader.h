@@ -13,16 +13,19 @@
 class API_EXPORT CModuleLoader
 {
 public:
-	static bool Load(const std::string &libFile);
-	static bool Load(const std::string &libFile, int flag);
-	static int GetSymbol(const std::string &sym, void **ptr);
-	static void UnLoad();
+	CModuleLoader();
+	~CModuleLoader();
+	bool Load(const std::string &libFile);
+	bool Load(const std::string &libFile, int flag);
+	bool IsLoaded();
+	int GetSymbol(const std::string &sym, void **ptr);
+	void UnLoad();
 
 private:
 #ifdef _WIN32
-	static HINSTANCE m_hInstLib;
+	HINSTANCE m_hInstLib;
 #else
-	static void* m_hInstLib;
+	void* m_hInstLib;
 #endif
 };
 

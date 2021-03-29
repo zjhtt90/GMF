@@ -96,6 +96,7 @@
     <ClInclude Include="MirrorPort.h" />
     <ClInclude Include="Plugin.h" />
     <ClInclude Include="PluginManager.h" />
+    <ClInclude Include="gmf_player.h" />
     <ClInclude Include="VideoCodec.h" />
     <ClInclude Include="VideoRender.h" />
   </ItemGroup>
@@ -115,6 +116,7 @@
     <ClCompile Include="MirrorPort.cpp" />
     <ClCompile Include="Plugin.cpp" />
     <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="gmf_player.cpp" />
     <ClCompile Include="VideoCodec.cpp" />
     <ClCompile Include="VideoRender.cpp" />
   </ItemGroup>

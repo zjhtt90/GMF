@@ -109,6 +109,8 @@ protected:
 
 	CMediaElement *m_parentNode;
 
+	int m_errCode;
+	std::string m_errMsg;
 public:
 	CMediaElement *m_prevElement;
 	CMediaElement *m_nextElement;

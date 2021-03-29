@@ -39,6 +39,11 @@ void CFFVideoScaler::Init(const std::string &name)
 int CFFVideoScaler::Open()
 {
 	LOG_INFO("Start VideoScaler");
+	if (m_dstWidth == m_srcWidth && m_dstHeight == m_srcHeight && m_dstPixFmt == m_srcPixFmt)
+	{
+		LOG_WARN("Don`t need scaler");
+		return MEDIA_ERR_NONE;
+	}
 	m_pSwsCtx = sws_getCachedContext(m_pSwsCtx,m_srcWidth, m_srcHeight, 
 		(AVPixelFormat)m_srcPixFmt,
 		m_dstWidth, m_dstHeight,
@@ -119,31 +124,37 @@ void CFFVideoScaler::SetState(MediaElementState state)
 
 void CFFVideoScaler::DrainInputBuffer(TRACKID id, CMediaBuffer *buffer)
 {
-	AVPicture srcPic = { 0x00 }, dstPic = { 0x00 };
-
-	if(m_pSwsCtx == NULL)
+	if (m_dstWidth == m_srcWidth && m_dstHeight == m_srcHeight && m_dstPixFmt == m_srcPixFmt)
 	{
-		return;
+		m_outPorts[0]->PushBufferToDownStream(buffer);
 	}
+	else
+	{
+		AVPicture srcPic = { 0x00 }, dstPic = { 0x00 };
+		if (m_pSwsCtx == NULL)
+		{
+			return;
+		}
 
-	avpicture_fill(&srcPic, buffer->GetData(),(AVPixelFormat)m_srcPixFmt, m_srcWidth, m_srcHeight);
+		avpicture_fill(&srcPic, buffer->GetData(), (AVPixelFormat)m_srcPixFmt, m_srcWidth, m_srcHeight);
 
-	avpicture_alloc(&dstPic, (AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight);
+		avpicture_alloc(&dstPic, (AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight);
 
-	sws_scale(m_pSwsCtx, srcPic.data, srcPic.linesize, 0, m_srcHeight,
-		dstPic.data, dstPic.linesize);
+		sws_scale(m_pSwsCtx, srcPic.data, srcPic.linesize, 0, m_srcHeight,
+			dstPic.data, dstPic.linesize);
 
-	
-	int size = avpicture_get_size((AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight);
-	unsigned char *data = new unsigned char[size];
-	avpicture_layout(&dstPic, (AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight, data, size);
-	avpicture_free(&dstPic);
 
-	CMediaBuffer *sBuf = new CMediaBuffer(data, size, buffer->GetPts(), buffer->GetDts(), buffer->GetDuration());
-	delete data;
+		int size = avpicture_get_size((AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight);
+		unsigned char *data = new unsigned char[size];
+		avpicture_layout(&dstPic, (AVPixelFormat)m_dstPixFmt, m_dstWidth, m_dstHeight, data, size);
+		avpicture_free(&dstPic);
 
-	m_outPorts[0]->PushBufferToDownStream(sBuf);
-	delete sBuf;
+		CMediaBuffer *sBuf = new CMediaBuffer(data, size, buffer->GetPts(), buffer->GetDts(), buffer->GetDuration());
+		delete data;
+
+		m_outPorts[0]->PushBufferToDownStream(sBuf);
+		delete sBuf;
+	}
 }
 
 int CFFVideoScaler::FillOutBuffer(TRACKID &id, CMediaBuffer **buffer)

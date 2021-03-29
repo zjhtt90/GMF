@@ -16,6 +16,7 @@ enum ElementType {
 
 enum MediaErr {
 	MEDIA_ERR_NONE = 0,
+	MEDIA_ERR_OPEN,
 	MEDIA_ERR_INVALIDE_PARAME,
 	MEDIA_ERR_MEMALLOC,
 	MEDIA_ERR_NOT_FOUND,
@@ -108,6 +109,7 @@ enum MediaElementState {
 #define META_KEY_OUTPORT_COUNT	"OutPortCount"
 #define META_KEY_MEDIA			"Media"
 #define META_KEY_FILE_PATH		"FilePath"
+#define META_KEY_URI			"URI"
 #define META_KEY_TRUNK_SIZE		"TrunkSize"
 #define META_KEY_PORT_BASE		"PortBase"
 #define META_KEY_SUBTITLE		"Subtitle"
@@ -185,7 +187,8 @@ enum META_DATA_VAL_TYPE {
 	META_DATA_VAL_TYPE_BOOL,
 	META_DATA_VAL_TYPE_FLOAT
 };
-struct MetaData 
+
+struct MetaData
 {
 	std::string mKey;
 	std::string	mValue;
@@ -314,7 +317,8 @@ struct MediaMetaInfo
 	int mStreamID;
 	MediaType mType;
 	MediaCodecType mCodecType;
-	MediaMetaInfo(MediaType type) : mType(type), mCodecType(MediaCodec_NONE)
+	int mReverse;
+	MediaMetaInfo(MediaType type) : mType(type), mCodecType(MediaCodec_NONE), mReverse(-1)
 	{
 
 	}
@@ -426,6 +430,8 @@ enum AudioSampleFormat {
 	AUDIO_SAMPLE_FMT_S32P,        ///< signed 32 bits, planar
 	AUDIO_SAMPLE_FMT_FLTP,        ///< float, planar
 	AUDIO_SAMPLE_FMT_DBLP,        ///< double, planar
+	AUDIO_SAMPLE_FMT_S64,         ///< signed 64 bits
+	AUDIO_SAMPLE_FMT_S64P,        ///< signed 64 bits, planar
 
 	AUDIO_SAMPLE_FMT_NB           ///< Number of sample formats. DO NOT USE if linking dynamically
 };

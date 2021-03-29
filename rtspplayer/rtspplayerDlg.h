@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "MediaPlayer.h"
+#include "gmf_player.h"
 
 // CrtspplayerDlg ¶Ô»°¿ò
 class CrtspplayerDlg : public CDialogEx
@@ -37,6 +37,6 @@ public:
 	afx_msg void OnBnClickedButtonPlay();
 	afx_msg void OnBnClickedButtonStop();
 private:
-	GMF::MediaPlayer* m_pPlayer;
-	
+	gmf_player_t* m_pPlayer1;
+	gmf_player_t* m_pPlayer2;
 };

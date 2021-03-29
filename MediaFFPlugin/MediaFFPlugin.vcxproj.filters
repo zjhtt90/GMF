@@ -54,6 +54,9 @@
     <ClInclude Include="FFAudioResample.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FFStreamingSrc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FFScreenCapture.cpp">
@@ -93,6 +96,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FFmpegPlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FFStreamingSrc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

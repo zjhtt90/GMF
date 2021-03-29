@@ -48,7 +48,6 @@ void CFFStreamingSrc::Init(const std::string &name)
 
 	m_bGetKeyFrame = false;
 	m_curPlayTime = 0;
-	m_timelineStart = 0;
 }
 
 void CFFStreamingSrc::UseParame(const MetaData &data)
@@ -241,20 +240,23 @@ void CFFStreamingSrc::SetState(MediaElementState state)
 				}
 			}
 		}
+
+		m_curState = MEDIA_ELEMENT_STATE_OPENED;
 	}
-	else if(state == MEDIA_ELEMENT_STATE_OPEN || MEDIA_ELEMENT_STATE_RESUME)
+	else if(state == MEDIA_ELEMENT_STATE_OPEN || state == MEDIA_ELEMENT_STATE_RESUME)
 	{
 		CSThread::Start();
 		av_read_play(m_fmtCtx);
-		m_timelineStart = av_gettime();
 		m_curState = MEDIA_ELEMENT_STATE_RUNNING;
 	}
 	else if (state == MEDIA_ELEMENT_STATE_PAUSE)
 	{
 		av_read_pause(m_fmtCtx);
+		m_curState = MEDIA_ELEMENT_STATE_PAUSED;
 	}
 	else if(state == MEDIA_ELEMENT_STATE_STOP)
 	{
+		m_curState = MEDIA_ELEMENT_STATE_STOPPED;
 		CSThread::Kill();
 		Close();		
 	}
@@ -299,8 +301,6 @@ void CFFStreamingSrc::Run()
 			AVRational time_base = in_stream->time_base;
 			AVRational time_base_q = { 1, AV_TIME_BASE };
 
-			int64_t stream_time = 0;
-			int64_t time_line = 0;
 			MediaMetaInfo* pMediaInfo = NULL;
 			int portIdx = GetMediaInfoByStreamID(pkt.stream_index, &pMediaInfo);
 			if (pMediaInfo == NULL || portIdx < 0)
@@ -333,10 +333,6 @@ void CFFStreamingSrc::Run()
 					continue;
 				}
 
-				//LOG_DEBUG("Current Video timestamp %d", pkt.dts);
-				//当前流播放相对时间
-				stream_time = av_rescale_q(pkt.dts, time_base, time_base_q) - av_rescale_q(pMediaInfo->mReverse, time_base, time_base_q);
-
 			}
 			else if (pMediaInfo->mType == MEDIA_TYPE_AUDIO)	//audio
 			{
@@ -344,21 +340,8 @@ void CFFStreamingSrc::Run()
 				{
 					continue;
 				}
-
-				//LOG_DEBUG("Current Audio timestamp %d", pkt.dts);
-				stream_time = av_rescale_q(pkt.dts, time_base, time_base_q) - av_rescale_q(pMediaInfo->mReverse, time_base, time_base_q);
 			}
 
-
-			//发送延时Important:Delay
-			{
-				time_line = av_gettime() - m_timelineStart;
-				//LOG_DEBUG("StreamTime:%d, Timeline:%d", stream_time, time_line);
-				if (stream_time > time_line)
-				{
-					av_usleep(stream_time - time_line);
-				}
-			}
 
 			int playTime = av_rescale_q(pkt.dts - in_stream->start_time, time_base, time_base_q) / AV_TIME_BASE;
 			if (m_curPlayTime != playTime)

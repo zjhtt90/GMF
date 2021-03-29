@@ -81,6 +81,7 @@
     <ClInclude Include="FFAudioResample.h" />
     <ClInclude Include="FFCameraCapture.h" />
     <ClInclude Include="FFComplexFilter.h" />
+    <ClInclude Include="FFStreamingSrc.h" />
     <ClInclude Include="FFMediaStorage.h" />
     <ClInclude Include="FFRTSPServer.h" />
     <ClInclude Include="FFScreenCapture.h" />
@@ -91,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FFAACEncoder.cpp" />
+    <ClCompile Include="FFStreamingSrc.cpp" />
     <ClCompile Include="FFmpegPlugin.cpp" />
     <ClCompile Include="FFAudioDecoder.cpp" />
     <ClCompile Include="FFAudioResample.cpp" />

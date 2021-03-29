@@ -138,6 +138,11 @@ void FFAudioDecoder::SetState(MediaElementState state)
 				m_codecID = AV_CODEC_ID_MP3;
 			}
 		}
+
+		if (m_desc.GetMetaData(META_KEY_CODEC_ID, data) == MEDIA_ERR_NONE)
+		{
+			m_codecID = FFCodecType((MediaCodecType)CUtil::convert<int, std::string>(data.mValue));
+		}
 	}
 }
 

@@ -132,7 +132,7 @@ void FFVideoDecoder::SetState(MediaElementState state)
 {
 	CVideoCodec::SetState(state);
 
-	if(state == MEDIA_ELEMENT_STATE_READY)
+	if (state == MEDIA_ELEMENT_STATE_READY)
 	{
 		MetaData data;
 
@@ -151,7 +151,13 @@ void FFVideoDecoder::SetState(MediaElementState state)
 				m_codecID = AV_CODEC_ID_MPEG4;
 			}
 		}
+
+		if (m_desc.GetMetaData(META_KEY_CODEC_ID, data) == MEDIA_ERR_NONE)
+		{
+			m_codecID = FFCodecType((MediaCodecType)CUtil::convert<int, std::string>(data.mValue));
+		}
 	}
+
 }
 
 void FFVideoDecoder::DrainInputBuffer(TRACKID id, CMediaBuffer *buffer)
@@ -178,9 +184,9 @@ int FFVideoDecoder::ProcessFrame(CMediaBuffer *srcBuf, CMediaBuffer **dstBuf)
 	int ret = MEDIA_ERR_NONE;
 	AVPacket packet = {0};
 
-	av_init_packet(&packet);
+	av_new_packet(&packet, srcBuf->GetDataSize());
+	memcpy(packet.data, srcBuf->GetData(), srcBuf->GetDataSize());
 
-	av_packet_from_data(&packet, srcBuf->GetData(), srcBuf->GetDataSize());
 	ret = avcodec_send_packet(m_pCodecCtx, &packet);
 	if (ret == 0)
 	{
@@ -194,6 +200,7 @@ int FFVideoDecoder::ProcessFrame(CMediaBuffer *srcBuf, CMediaBuffer **dstBuf)
 			}
 			else
 			{
+#if 0
 				if (!m_bGetInfo)
 				{
 					LOG_DEBUG("parse video info,w(%d),h(%d),fmt(%d)", m_dstFrameBuf->width, m_dstFrameBuf->height, m_dstFrameBuf->format);
@@ -214,19 +221,21 @@ int FFVideoDecoder::ProcessFrame(CMediaBuffer *srcBuf, CMediaBuffer **dstBuf)
 
 					m_bGetInfo = true;
 				}
+#endif
 
 				unsigned char* pTemp = NULL;
 				int len = av_image_get_buffer_size((AVPixelFormat)m_dstFrameBuf->format, m_dstFrameBuf->width, m_dstFrameBuf->height, 1);
-				pTemp = new unsigned char[len];
+				pTemp = (unsigned char*)av_malloc(len);
 				av_image_copy_to_buffer(pTemp, len, m_dstFrameBuf->data, m_dstFrameBuf->linesize, (AVPixelFormat)m_dstFrameBuf->format, m_dstFrameBuf->width, m_dstFrameBuf->height, 1);
 				*dstBuf = new CVideoBuffer(pTemp, len, srcBuf->GetPts(), srcBuf->GetDts(),
 					srcBuf->GetDuration(), av_get_picture_type_char(m_dstFrameBuf->pict_type));
-				delete pTemp;
+				av_freep(&pTemp);
 
 				av_frame_unref(m_dstFrameBuf);
 			}
 		}
 	}
+	av_packet_unref(&packet);
 	return ret;
 }
 
@@ -250,7 +259,7 @@ void FFVideoDecoder::Run()
 
 			if(inBuf != NULL)
 			{
-				ProcessFrame(inBuf, &outBuf);
+				this->ProcessFrame(inBuf, &outBuf);
 				delete inBuf;
 				if(outBuf != NULL)
 				{
