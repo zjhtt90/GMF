@@ -32,7 +32,10 @@ CMediaElement* element_create(const std::string &factoryName, const std::string 
 	IElementFactory *factory = CPluginManager::GetInstance().GetElementFactory(factoryName);
 	if(factory != NULL)
 	{
-		element = factory->CreateElement(name);
+		if(name.empty())
+			element = factory->CreateElement();
+		else
+			element = factory->CreateElement(name);
 		if(element != NULL)
 		{
 			//std::cout << element << std::endl;

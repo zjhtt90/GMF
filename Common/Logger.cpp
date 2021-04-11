@@ -73,6 +73,8 @@ void CLogger::setLogPath(const char *file)
 	{
 		memset(m_filePath, 0, sizeof(m_filePath));
 		strcpy(m_filePath, file);
+
+		FileClean();
 	}
 }
 
@@ -233,6 +235,18 @@ void CLogger::FileOut(int level, const char *content)
 		fprintf(filePtr, content);
 		fprintf(filePtr, "\r\n");
 
+		fclose(filePtr);
+	}
+}
+
+void CLogger::FileClean()
+{
+	FILE *filePtr = NULL;
+
+	filePtr = fopen(m_filePath, "w");
+	if (filePtr)
+	{
+		fprintf(filePtr, "");
 		fclose(filePtr);
 	}
 }

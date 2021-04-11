@@ -4,6 +4,10 @@
 
 #include "tinyxml2.h"
 
+#include "LogManager.h"
+
+#define LOG_FILTER	"PluginManager"
+
 PLUGIN_STATIC_DECLARE(base);
 
 CPluginManager CPluginManager::m_Instance;
@@ -38,10 +42,27 @@ void CPluginManager::LoadPlugins()
 			tinyxml2::XMLElement *item = root->FirstChildElement("item");
 			while(item != NULL)
 			{
-				std::string pluginName = "";
 				std::string libPath = "";
-				pluginName = item->Attribute("name");
-				libPath = item->Attribute("libpath");
+				const char* pluginName = item->Attribute("name");
+				const char* temp = item->Attribute("libpath");
+				if (temp != NULL)
+				{
+					libPath = temp;
+				}
+				else
+				{
+					temp = item->Attribute("libname");
+					if (temp == NULL)
+					{
+						LOG_WARN("invalid plugin item %s", pluginName);
+						break;
+					}
+					else
+					{
+						libPath = DEFAULT_PLUGIN_DIR + std::string(temp);
+					}
+				}
+				LOG_DEBUG("read plugin item %s, path:%s", pluginName, libPath.c_str());
 
 				CPlugin *plugin = new CPlugin();
 				plugin->Init(libPath);

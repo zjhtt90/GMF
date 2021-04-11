@@ -102,7 +102,7 @@ BOOL CrtspplayerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	gmf_init(0, 0, NULL);
+	gmf_init(2, 1, "rtspplayer.log");
 
 	m_pPlayer1 = gmf_player_create(NULL, NULL);
 	m_pPlayer2 = gmf_player_create(NULL, NULL);

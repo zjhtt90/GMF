@@ -111,6 +111,7 @@ private:
 	void logv(int level, const location_info_t* a_locinfo,const char* format, va_list args);
 	void ConsoleOut(int level, const char *content);
 	void FileOut(int level, const char *content);
+	void FileClean();
 
 private:
 	static CLogger m_Instance;

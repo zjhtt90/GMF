@@ -18,8 +18,13 @@
 
 //#define _USE_C11
 
-#define PLUGIN_CONFIG_FILE	"./config/plugins.xml"
+#define PLUGIN_CONFIG_FILE	"./plugins.xml"
 
+#if defined(SYSTEM_WIN32)
+#define DEFAULT_PLUGIN_DIR	".\\plugins\\"
+#else
+#define DEFAULT_PLUGIN_DIR	"./plugins/"
+#endif
 
 #define PASTESTR(A, B) A##B
 

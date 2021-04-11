@@ -5,6 +5,8 @@
 
 #include <sys/stat.h>
 
+#define LOG_FILTER	"Plugin"
+
 CPlugin::CPlugin()
 	: m_fileName(""), m_baseName(""), m_fileSize(0)
 {
@@ -57,12 +59,14 @@ bool CPlugin::Init(const std::string &filePath)
 		}
 		else
 		{
+			LOG_ERR("get symbol error for library %s", filePath.c_str());
 			res = false;
 		}
 
 	}
 	else
 	{
+		LOG_ERR("load library %s error", filePath.c_str());
 		res = false;
 	}
 

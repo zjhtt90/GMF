@@ -134,5 +134,8 @@
     <ClCompile Include="gmf_player.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="gmf_player_wrapper_csharp_wrap.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
