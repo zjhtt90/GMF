@@ -5,6 +5,7 @@
 
 extern "C"
 {
+#include "libavutil/error.h"
 #include "libavutil/pixfmt.h"
 #include "libavcodec/avcodec.h"
 };

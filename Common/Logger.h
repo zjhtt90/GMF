@@ -29,7 +29,7 @@ typedef struct
  **/
 #define LOCATION_INFO_INITIALIZER(user_data) {LOG_FILTER, __FILE__, __LINE__, __FUNCTION__, user_data }
 
-typedef void(*log_output_cb)(int level, const char* msg);
+typedef void(STDCALL *log_output_cb)(int level, const char* msg);
 
 class API_EXPORT CLogger
 {

@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MediaFFPlugin", "MediaFFPlu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rtspplayer", "rtspplayer\rtspplayer.vcxproj", "{D48D6805-0C81-4FFA-8EBC-440F77152EBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rtspplayertest", "rtspplayertest\rtspplayertest.csproj", "{CE243034-73CA-4487-82AB-E1BDF1A19B9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,18 @@ Global
 		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|Win32.Build.0 = Release|Win32
 		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|x64.ActiveCfg = Release|x64
 		{D48D6805-0C81-4FFA-8EBC-440F77152EBD}.Release|x64.Build.0 = Release|x64
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|Win32.Build.0 = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|Win32.Build.0 = Release|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE243034-73CA-4487-82AB-E1BDF1A19B9A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

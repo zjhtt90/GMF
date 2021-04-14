@@ -8,7 +8,6 @@
 
 #include <assert.h>
 
-#include "libavutil/error.h"
 
 #define LOG_FILTER	"FFAACEncoder"
 

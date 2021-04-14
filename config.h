@@ -16,6 +16,12 @@
 #define API_EXPORT
 #endif
 
+# if defined(SYSTEM_WIN32)
+#   define STDCALL __stdcall
+# else
+#   define STDCALL
+# endif
+
 //#define _USE_C11
 
 #define PLUGIN_CONFIG_FILE	"./plugins.xml"

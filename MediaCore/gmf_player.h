@@ -15,7 +15,7 @@
 extern "C" {
 #endif
 
-typedef void(*log_func)(int level, const char* msg);
+typedef void(__stdcall *log_func)(int level, const char* msg);
 typedef struct _gmf_player gmf_player_t;
 
 /************************************************************************/
